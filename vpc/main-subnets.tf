@@ -1,14 +1,12 @@
 resource "aws_default_security_group" "default" {
   vpc_id = aws_vpc.main.id
-
-  tags = {
-    Name = "walter"
-  }
+  tags = local.tags
 }
 
-resource aws_security_group https_ingress {
-  name   = "walter-https"
+resource "aws_security_group" "https_ingress" {
+  name   = "${local.name}-https"
   vpc_id = aws_vpc.main.id
+  tags   = local.tags
 
   ingress {
     from_port        = 80
