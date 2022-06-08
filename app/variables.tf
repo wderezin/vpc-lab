@@ -8,3 +8,7 @@ variable "tags" {
   })
   description = "Output from the tags module"
 }
+
+variable "public_subnet_ids" {
+  type = list(string)
+}

@@ -19,6 +19,11 @@ variable "environment" {
 
 variable "compliance" {
   type = string
+
+  validation {
+    condition     = contains(["pic", "sox", "no-compliance"], var.compliance)
+    error_message = "The compliance value must be pic, sox, no-compliance"
+  }
 }
 
 variable "data-sensitivity" {
@@ -27,4 +32,9 @@ variable "data-sensitivity" {
 
 variable "exposure" {
   type = string
+
+  validation {
+    condition     = contains(["public", "private"], var.exposure)
+    error_message = "The exposure value must be public or private"
+  }
 }

@@ -3,6 +3,7 @@
 
 locals {
   name             = var.name
+  short_name       = var.short_name == "" ? substr(var.name, 0, 3) : var.short_name
   owner            = var.owner
   business-product = var.business-product == null ? local.name : var.business-product
   cost-center      = var.cost-center
@@ -22,6 +23,6 @@ locals {
     exposure : local.exposure
   }
 
-  all_tags = merge(local.all_tags_without_Name, {Name: local.name})
+  all_tags = merge(local.all_tags_without_Name, { Name : local.name })
 
 }
