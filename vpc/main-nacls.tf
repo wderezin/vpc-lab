@@ -11,7 +11,7 @@ resource "aws_default_network_acl" "default" {
 resource "aws_network_acl" "public" {
   vpc_id     = aws_vpc.main.id
   subnet_ids = [aws_subnet.public-a.id, aws_subnet.public-b.id, aws_subnet.private-a.id, aws_subnet.private-b.id]
-  tags = local.tags
+  tags       = local.tags
 
   ingress {
     rule_no    = 100

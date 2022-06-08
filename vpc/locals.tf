@@ -2,11 +2,7 @@
 # Only local variables are used in resources and data
 
 locals {
-  name = var.name == null ? var.owner : var.name
+  name = var.tags.all_tags["name"]
 
-  tags = {
-    Name : local.name
-    Owner : var.owner
-    CostCenter : "network"
-  }
+  tags = var.tags.all_tags
 }

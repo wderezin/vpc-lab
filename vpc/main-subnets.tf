@@ -1,6 +1,6 @@
 resource "aws_default_security_group" "default" {
   vpc_id = aws_vpc.main.id
-  tags = local.tags
+  tags   = local.tags
 }
 
 resource "aws_security_group" "https_ingress" {
@@ -22,5 +22,9 @@ resource "aws_security_group" "https_ingress" {
     to_port          = 443
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
+  }
+
+  lifecycle {
+    ignore_changes = [name]
   }
 }
