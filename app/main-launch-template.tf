@@ -16,6 +16,7 @@ resource "aws_launch_template" "app" {
     security_groups             = [aws_security_group.lb-app.id, aws_security_group.ssh.id]
   }
 
+  # Advanced Monitoring Metrics
   monitoring {
     enabled = false
   }

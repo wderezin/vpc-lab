@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo " *** Installing the web server"
+echo " *** Installing the web server ***"
 
 while test -f /var/run/yum.pid
 do
