@@ -1,22 +1,20 @@
 # All terraform data types
 
 data "aws_ami" "app-ami" {
+  //  AWS is owner
+  owners      = ["137112412989"]
   most_recent = true
-  owners      = ["099720109477"]
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-*-20.04-amd64-server-*"]
+    values = ["amzn2-ami-hvm-*"]
   }
-
-  filter {
-    name   = "root-device-type"
-    values = ["ebs"]
-  }
-
   filter {
     name   = "virtualization-type"
     values = ["hvm"]
   }
-
+  filter {
+    name   = "architecture"
+    values = ["x86_64"]
+  }
 }

@@ -9,6 +9,10 @@ variable "tags" {
   description = "Output from the tags module"
 }
 
+variable "vpc_id" {
+  type = string
+}
+
 variable "public_subnet_ids" {
   type = list(string)
 }
