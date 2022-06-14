@@ -2,8 +2,8 @@
 resource "aws_autoscaling_group" "app" {
   name = local.all_tags["name"]
 
-  min_size = 2
-  max_size = 5
+  min_size         = 2
+  max_size         = 5
   desired_capacity = 2
 
   //  Trigger refresh when template changes
@@ -39,8 +39,8 @@ resource "aws_autoscaling_group" "app" {
     }
   }
 
-    lifecycle {
-      ignore_changes = [desired_capacity] # [ load_balancers, target_group_arns]
-    }
+  lifecycle {
+    ignore_changes = [desired_capacity] # [ load_balancers, target_group_arns]
+  }
 
 }

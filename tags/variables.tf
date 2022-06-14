@@ -38,3 +38,12 @@ variable "exposure" {
     error_message = "The exposure value must be public or private"
   }
 }
+
+variable "extras" {
+  type = map(string)
+
+  validation {
+    condition     = length(var.extras) > 0
+    error_message = "The extras must have at least 1 value"
+  }
+}

@@ -5,7 +5,7 @@ resource "aws_default_security_group" "default" {
 
 resource "aws_security_group" "https_ingress" {
   name   = "${local.name}-https"
-  vpc_id = aws_vpc.main.id
+  vpc_id = null
   tags   = local.tags
 
   ingress {

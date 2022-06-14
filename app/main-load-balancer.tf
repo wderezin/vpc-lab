@@ -2,6 +2,7 @@
 resource "aws_security_group" "lb-app" {
   name   = "${local.all_tags["name"]}-lb-app"
   vpc_id = local.vpc_id
+  tags   = local.all_tags
 
   ingress {
     from_port = 80
@@ -13,7 +14,9 @@ resource "aws_security_group" "lb-app" {
 }
 
 resource "aws_security_group" "public-lb" {
-  name = "${local.all_tags["name"]}-public-lb"
+  name   = "${local.all_tags["name"]}-public-lb"
+  vpc_id = local.vpc_id
+  tags   = local.all_tags
 
   ingress {
     from_port        = 80

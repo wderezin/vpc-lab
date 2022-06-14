@@ -10,20 +10,22 @@ resource "aws_internet_gateway" "main" {
 # ***********************************
 
 resource "aws_route_table" "public" {
-  for_each  = local.public_subnet_ids
-  vpc_id    = aws_vpc.main.id
-  tags      = local.tags
+  vpc_id = aws_vpc.main.id
+  tags   = local.tags
 }
 
-resource "aws_route_table_association" "public" {
-  for_each       = local.public_subnet_ids
-  subnet_id      = each.key
-  route_table_id = aws_route_table.public[each.key].id
+resource "aws_route_table_association" "public-a" {
+  subnet_id      = aws_subnet.public-a.id
+  route_table_id = aws_route_table.public.id
+}
+
+resource "aws_route_table_association" "public-b" {
+  subnet_id      = aws_subnet.public-b.id
+  route_table_id = aws_route_table.public.id
 }
 
 resource "aws_route" "public_internet_gateway" {
-  for_each               = local.public_subnet_ids
-  route_table_id         = aws_route_table.public[each.key].id
+  route_table_id         = aws_route_table.public.id
   destination_cidr_block = "0.0.0.0/0"
   gateway_id             = aws_internet_gateway.main.id
 
