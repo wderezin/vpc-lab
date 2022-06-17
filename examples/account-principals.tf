@@ -4,7 +4,7 @@ locals {
   account_num = [
     "1111111111",
     "2222222222",
-    "3333333333"
+    "3333333333",
   ]
 
   account_arns = [ for num in local.account_num : "arn:aws:iam::${num}:root" ]

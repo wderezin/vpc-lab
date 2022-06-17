@@ -1,0 +1,11 @@
+---
+
+- name: Network Getting Started First Playbook Extended
+  gather_facts: false
+  hosts: localhost
+  connection: local
+  tasks:
+
+    - name: Display the changed config
+      debug:
+        msg: "Hello World"
